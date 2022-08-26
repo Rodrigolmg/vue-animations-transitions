@@ -4,11 +4,11 @@
 		<hr>
 		<b-button variant="primary" class="mb-4" @click="show = !show">Show Message</b-button>
 		<transition name="fade">
-			<b-alert variant="info" show v-if="show">{{msg}}</b-alert>
+			<b-alert variant="info" show v-if="!show">{{msg}}</b-alert>
 		</transition>
 		
-		<transition name="slide" type="transition">
-			<b-alert variant="info" show v-show="show">{{msg}}</b-alert>
+		<transition name="slide" type="transition" appear>
+			<b-alert variant="info" show v-show="!show">{{msg}}</b-alert>
 		</transition>
 	</div>
 </template>
