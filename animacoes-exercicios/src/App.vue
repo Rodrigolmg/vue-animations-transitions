@@ -32,6 +32,7 @@
 		<hr>
 		<b-button variant="primary" class="mb-4" @click="show2 = !show2">Show</b-button>
 		<transition
+			:css="false"
 			@before-enter="beforeEnter"
 			@enter="enter"
 			@after-enter="afterEnter"
