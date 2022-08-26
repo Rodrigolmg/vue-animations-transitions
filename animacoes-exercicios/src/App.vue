@@ -29,19 +29,38 @@
 			<b-alert variant="info" show v-if="!show" key="info">{{msg}}</b-alert>
 			<b-alert variant="warning" show v-else key="warn">{{msg}}</b-alert>
 		</transition>
+		<hr>
+		<b-button variant="primary" class="mb-4" @click="show2 = !show2">Show</b-button>
+		<transition
+			@before-enter="beforeEnter"
+			@enter="enter"
+			@after-enter="afterEnter"
+			@enter-cancelled="enterCancelled"
+			@before-leave="beforeLeave"
+			@leave="leave"
+			@after-leave="afterLeave"
+			@leave-cancelled="leaveCancelled">
+			<div class="box" v-if="show2">
+
+			</div>
+		</transition>
 	</div>
 </template>
 
 <script>
+import animationMixin from '@/animationMixin'
 
 export default {
+	mixins:[animationMixin],
 	data(){
 		return {
 			msg: 'A new information message for users',
 			show: false,
+			show2: true,
 			animationType: 'fade'
 		}
-	}
+	},
+
 }
 </script>
 
@@ -56,6 +75,15 @@ export default {
 	font-size: 1.5rem;
 }
 
+.box {
+	height: 100px;
+	width: 300px;
+	margin: 30px auto;
+	background-color: lightgreen;
+}
+
+
+/* TRANSITIONS */
 .fade-enter, .fade-leave-to {
 	opacity: 0;
 }
