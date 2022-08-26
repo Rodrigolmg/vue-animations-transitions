@@ -3,12 +3,12 @@
 		<h1>Animações</h1>
 		<hr>
 		<b-button variant="primary" class="mb-4" @click="show = !show">Show Message</b-button>
-		<!-- <transition name="fade">
+		<transition name="fade">
 			<b-alert variant="info" show v-if="show">{{msg}}</b-alert>
-		</transition> -->
+		</transition>
 		
 		<transition name="slide" type="transition">
-			<b-alert variant="info" show v-if="show">{{msg}}</b-alert>
+			<b-alert variant="info" show v-show="show">{{msg}}</b-alert>
 		</transition>
 	</div>
 </template>
@@ -62,7 +62,7 @@ export default {
 
 .slide-leave-active {
 	animation: slide-out 2s ease;
-	transition: opacity 6s;
+	transition: opacity 2s;
 }
 
 .slide-enter, .slide-leave-to {
